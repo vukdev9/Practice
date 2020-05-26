@@ -1,0 +1,11 @@
+.subcategories {
+  display: inline;
+  margin-left: 80px;
+  color: black;
+  font-weight: 300;
+  position: relative;
+}
+
+.subcategories:hover {
+  font-weight: 600;
+}

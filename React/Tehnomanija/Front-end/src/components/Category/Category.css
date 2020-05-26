@@ -1,0 +1,20 @@
+nav {
+  width: 900px;
+  background-color: #ffcb05;
+  padding: 0 10px 5px 10px;
+  display: inline;
+  cursor: pointer;
+  position: relative;
+  top: -1px;
+}
+
+nav i {
+  vertical-align: middle;
+  padding: 0 7px 0 7px;
+}
+
+nav span {
+  vertical-align: middle;
+  font-weight: 800;
+  font-size: 16px;
+}

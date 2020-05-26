@@ -1,0 +1,11 @@
+.slideMenu {
+  float: right;
+}
+
+ul.slideMenu {
+  margin: 0;
+}
+
+ul li {
+  margin-left: 40px;
+}

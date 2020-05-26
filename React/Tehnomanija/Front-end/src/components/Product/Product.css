@@ -1,0 +1,7 @@
+.product {
+  display: inline-block;
+  position: relative;
+  top: 30px;
+  left: -120px;
+  margin: 0;
+}

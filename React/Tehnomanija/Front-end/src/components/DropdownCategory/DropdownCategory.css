@@ -1,0 +1,23 @@
+.dropdownCategory {
+  padding: 5px;
+  margin-left: 32px;
+  font-size: 17px;
+}
+
+.dropdownCategory a {
+  text-decoration: none;
+  color: rgb(36, 35, 35);
+  font-weight: 500;
+}
+
+.dropdownCategory:hover {
+  color: black;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.dropdownCategory:hover a {
+  color: black;
+  font-size: 20px;
+  transition: 0.3s;
+}
