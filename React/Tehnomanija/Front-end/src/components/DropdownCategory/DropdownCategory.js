@@ -1,65 +1,44 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./DropdownCategory.css";
-import axios from "axios";
 import Subcategory from "../Subcategory/Subcategory";
 
-class DropdownCategory extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showSubcateries: false,
-      categories: [],
-      subcategories: [],
-    };
-    this.mouseEnter = this.mouseEnter.bind(this);
-    this.mouseLeave = this.mouseLeave.bind(this);
-  }
+const DropdownCategory = ({ category, categoryTitle, icon }) => {
+  const [subcategories, setSubcategories] = useState([]);
+  const [showSubcategories, setShowSubcategories] = useState(false);
 
-  componentDidMount() {
-    axios.get("http://localhost:8080/categories").then((res) =>
-      this.setState({
-        categories: res.data.map((cat) => cat),
-      })
-    );
-  }
-
-  mouseEnter = () => {
-    this.setState({ showSubcateries: true });
-    const currentCategory = this.state.categories.filter(
-      (cat) => cat.code === this.props.categoryTitle
-    );
-
-    const subCategories = currentCategory.map(
-      (subValue) => subValue.subCategories
-    );
-    this.setState({
-      subcategories: subCategories
-        .filter((value) => value != null)
-        .map((data) => data.map((subCode) => subCode.code)),
-    });
+  const mouseEnter = () => {
+    setShowSubcategories(true);
+    const subCategories = category.subCategories
+      .filter((value) => value !== null)
+      .map((subcategory) => subcategory.code);
+    setSubcategories(subCategories);
   };
 
-  mouseLeave = () => {
-    this.setState({ showSubcateries: false });
+  const mouseLeave = () => {
+    setShowSubcategories(false);
   };
 
-  render() {
-    return (
-      <div
-        className="dropdownCategory"
-        onMouseEnter={this.mouseEnter}
-        onMouseLeave={this.mouseLeave}
-      >
-        <i className={this.props.icon}></i>
-        <a href="!#">{this.props.categoryTitle}</a>
-        {this.state.showSubcateries
-          ? this.state.subcategories.map((subCategory, index) => {
-              return <Subcategory key={index} subcategory={subCategory} />;
-            })
-          : null}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      className="dropdownCategory"
+      onMouseEnter={() => mouseEnter()}
+      onMouseLeave={() => mouseLeave()}
+    >
+      <i className={icon}></i>
+      <a href="!#">{categoryTitle}</a>
+      {showSubcategories &&
+        subcategories.map((subCategory, index) => {
+          return (
+            <Subcategory
+              id={subCategory}
+              key={index}
+              category={category}
+              subcategory={subCategory}
+            />
+          );
+        })}
+    </div>
+  );
+};
 
 export default DropdownCategory;

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "./components/Header/Header";
 import Category from "./components/Category/Category";
-import SlideMenu from "./components/SlideMenu/SlideMenu";
 import Shufler from "./components/Shufler/Shufler";
 import GridCard from "./components/GridCard/GridCard";
 import SectionTitle from "./components/SectionTitle/SectionTitle";
